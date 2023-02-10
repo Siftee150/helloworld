@@ -1,4 +1,4 @@
-# helloworld
+# Helloworld in Google Kubernetes Engine (GKE)
 This is a basic hello world api, with the ability to be containerized into docker image. <br>
 The following are the steps to upload it to google kubernetes engine:<br>
 1) First, clone this repo.
