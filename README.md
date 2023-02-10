@@ -26,6 +26,9 @@ The following are the steps to upload it to google kubernetes engine:<br>
 23) Then the "Expose services" tab will have an option like this-><br> <img width="521" alt="image" src="https://user-images.githubusercontent.com/62537864/218145050-94071ffa-7730-4a07-a6ff-499a1aa15e49.png">
 24) Follow the link under the "Endpoints" option. Taa daa! We see our hello world response on the link!<br><img width="616" alt="image" src="https://user-images.githubusercontent.com/62537864/218145294-55d4aa8a-9c42-47fa-8b42-d94d43b38c13.png">
 
+<br>
+<br>
+Referenced from: https://medium.com/hashmapinc/how-to-build-and-deploy-docker-images-on-gke-part-ii-f8466922f5f5
 
 
 
