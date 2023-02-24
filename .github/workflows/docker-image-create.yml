@@ -27,7 +27,7 @@ jobs:
 
       - name: Build and push image
         run: |
-          echo ${{ github.repository }}
+          echo ${{ github.repository_owner }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
