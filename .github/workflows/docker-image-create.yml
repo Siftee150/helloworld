@@ -26,5 +26,6 @@ jobs:
           version=${{github.event.release.tag_name}}    
           echo ${branch}
           echo ${version}
+          echo "event name is:" ${{ github.event_name }} 
           echo $${{ github.ref }}
           echo ${{ github.event.release.tag_name }}
