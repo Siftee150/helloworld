@@ -28,17 +28,10 @@ jobs:
       - name: Build and push image
         run: |
           echo ${{ github.repository }}
+
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v4
         with:
           images: |
             ghcr.io/${{ github.repository }}
-
-      - name: Build and push Docker images
-        uses: docker/build-push-action@v4
-        with:
-          context: ..
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
