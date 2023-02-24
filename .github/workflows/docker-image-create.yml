@@ -23,6 +23,6 @@ jobs:
           branch=${GITHUB_REF##*/}
           if [[ ${{ github.event_name == 'push' }} ]]; then
             echo ${branch}
-          else if [[ ${{ github.event_name == 'release' }} ]]; then
+          elif [[ ${{ github.event_name == 'release' }} ]]; then
             echo "d e" ${branch}
           fi
