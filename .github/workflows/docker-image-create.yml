@@ -18,10 +18,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push image
+      - name: Pushed to main
+        if: ${{ github.event_name == 'push' }}
         run: |
-          raw=$(git branch -r --contains ${{ github.ref }})
-          echo ${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
           branch=${GITHUB_REF##*/}
           version=${{github.event.release.tag_name}}    
           echo ${branch}
