@@ -23,5 +23,3 @@ jobs:
           branch=${raw##*/}
           version=${{ github.event.release.tag_name}}    
           echo ${version}
-          docker-compose build
-          docker rmi temp-name
