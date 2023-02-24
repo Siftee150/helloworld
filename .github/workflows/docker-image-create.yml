@@ -28,3 +28,13 @@ jobs:
           echo "event name is:" ${{ github.event_name }} 
           echo $${{ github.ref }}
           echo ${{ github.event.release.tag_name }}
+      - name: Published a release
+        if: ${{ github.event_name == 'release' }}
+        run: |
+          branch=${GITHUB_REF##*/}
+          version=${{github.event.release.tag_name}}    
+          echo ${branch}
+          echo ${version}
+          echo "event name is:" ${{ github.event_name }} 
+          echo $${{ github.ref }}
+          echo ${{ github.event.release.tag_name }}
