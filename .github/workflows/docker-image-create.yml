@@ -20,13 +20,15 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push image
         run: |
+        # main-epoch 
+        # release-0.0.5
           branch=${GITHUB_REF##*/}
           echo ${{ github.event_name == 'push' }}
-          if [ ${{ github.event_name == 'push' }} ] 
+          if [ ${{ github.event_name }} == 'push' ] 
           then
              echo "hello"
              echo ${branch}
-          elif [ ${{ github.event_name == 'release' }} ]
+          elif [ ${{ github.event_name }} == 'release' ]
           then
              echo "d e" ${branch}
           fi
