@@ -21,12 +21,6 @@ jobs:
       - name: Build and push image
         run: |
           branch=${GITHUB_REF##*/}
-          version=${{github.event.release.tag_name}}    
-          echo ${branch}
-          echo ${version}
-          echo "event name is:" ${{ github.event_name }} 
-          echo $${{ github.ref }}
-          echo ${{ github.event.release.tag_name }}
           if [[ ${{ github.event_name == 'push' }} ]]; then
             echo ${branch}
           else
