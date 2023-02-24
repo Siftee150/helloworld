@@ -1,32 +1,44 @@
-name: Docker image build and push
-run-name: Creating docker image
+name: Publish Docker image
+
 on:
   push:
     branches:
       - main
   release:
     types: [created]
+
 jobs:
-  publish-docker-image:
+  push_to_registries:
+    name: Push Docker image to github package registry
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
     steps:
-      - name: Checkout
+      - name: Check out the repo
         uses: actions/checkout@v3
-      - name: Login to GitHub Container Registry
+
+      - name: Log in to the Container registry
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build and push image
         run: |
-          branch=${GITHUB_REF##*/}
-          echo ${{ github.event_name == 'push' }}
-          if [ ${{ github.event_name }} == 'push' ] 
-          then
-             echo "hello"
-             echo ${branch}
-          elif [ ${{ github.event_name }} == 'release' ]
-          then
-             echo "d e" ${branch}
-          fi
+          echo ${{ github.repository }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: |
+            ghcr.io/${{ github.repository }}
+
+      - name: Build and push Docker images
+        uses: docker/build-push-action@4
+        with:
+          context: ..
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
