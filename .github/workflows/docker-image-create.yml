@@ -23,6 +23,5 @@ jobs:
           branch=${raw##*/}
           version=${{ github.event.release.tag_name}}    
           echo ${version}
-          imagename="ghcr.io/team-black-box/store:${branch}-${version}"
           docker-compose build
           docker rmi temp-name

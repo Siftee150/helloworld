@@ -1,7 +1,7 @@
 version: "3.6"
 services:
   typescript-express-app:
-    image: sifr015/helloword
+    image: temp-name
     build:
        context: .
        dockerfile: Dockerfile
