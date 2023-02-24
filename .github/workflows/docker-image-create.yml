@@ -18,8 +18,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Pushed to main
-        if: ${{ github.event_name == 'push' }}
+      - name: Build and push image
         run: |
           branch=${GITHUB_REF##*/}
           version=${{github.event.release.tag_name}}    
@@ -28,13 +27,8 @@ jobs:
           echo "event name is:" ${{ github.event_name }} 
           echo $${{ github.ref }}
           echo ${{ github.event.release.tag_name }}
-      - name: Published a release
-        if: ${{ github.event_name == 'release' }}
-        run: |
-          branch=${GITHUB_REF##*/}
-          version=${{github.event.release.tag_name}}    
-          echo ${branch}
-          echo ${version}
-          echo "event name is:" ${{ github.event_name }} 
-          echo $${{ github.ref }}
-          echo ${{ github.event.release.tag_name }}
+          if [[ ${{ github.event_name == 'push' }} ]]; then
+            echo ${branch}
+          else
+            echo "d e" ${branch}
+          fi
