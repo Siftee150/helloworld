@@ -22,9 +22,11 @@ jobs:
         run: |
           branch=${GITHUB_REF##*/}
           echo ${{ github.event_name == 'push' }}
-          if [ ${{ github.event_name == 'push' }} ] ; then
-            echo "ishiwej"
-            echo ${branch}
-          elif [ ${{ github.event_name == 'release' }} ] ; then
-            echo "d e" ${branch}
+          if [ ${{ github.event_name == 'push' }} ] 
+          then
+             echo "hello"
+             echo ${branch}
+          elif [ ${{ github.event_name == 'release' }} ]
+          then
+             echo "d e" ${branch}
           fi
