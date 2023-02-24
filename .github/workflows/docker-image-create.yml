@@ -26,3 +26,4 @@ jobs:
           echo ${branch}
           echo ${version}
           echo $${{ github.ref }}
+          echo ${{ github.event.release.tag_name }}
