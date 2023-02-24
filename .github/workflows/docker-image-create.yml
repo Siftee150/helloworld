@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - main
-      - "release/**"
+  release:
+    types: [published]
 jobs:
   publish-docker-image:
     runs-on: ubuntu-latest
@@ -20,8 +21,10 @@ jobs:
       - name: Build and push image
         run: |
           raw=$(git branch -r --contains ${{ github.ref }})
-          branch=${raw##*/}
-          version=${{ github.event.release.tag_name}}    
+          echo ${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+          branch=${GITHUB_REF##*/}
+          version=${{github.event.release.tag_name}}    
+          echo ${branch}
           echo ${version}
-          docker-compose build
-          docker rmi temp-name
+          echo $${{ github.ref }}
+          echo ${{ github.event.release.tag_name }}
