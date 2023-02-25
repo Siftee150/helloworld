@@ -38,8 +38,8 @@ jobs:
           flavor: |
             latest=false
           tags: |
-            type=raw,enable=true,priority=1000,prefix={{branch}}-,value={{date 'YYYYMMDDHHmmss' tz='Asia/Kolkata'}}
-            type=semver,enable=true,pattern={{version}},priority=200,prefix=release-
+            type=raw,enable=${{ github.event_name == 'push' }},prefix={{branch}}-,value={{date 'YYYYMMDDHHmmss' tz='Asia/Kolkata'}}
+            type=semver,enable=${{ github.event_name == 'release' }},pattern={{version}},prefix=release-
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
