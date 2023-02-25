@@ -35,8 +35,11 @@ jobs:
         with:
           images: |
             ghcr.io/${{ github.repository_owner }}/store
+          flavor: |
+            latest=false
           tags: |
-            type=semver,pattern={{version}}
+            type=semver,pattern={{version}},priority=1000,prefix="release"
+            type=raw,enable=true,priority=200,prefix={{branch}}-,value={{date 'YYYYMMDD' tz='Asia/Kolkata'}}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
