@@ -38,7 +38,7 @@ jobs:
           flavor: |
             latest=false
           tags: |
-            type=semver,pattern={{version}},priority=1000,prefix="release"
+            type=semver,pattern={{version}},priority=1000,prefix=release
             type=raw,enable=true,priority=200,prefix={{branch}}-,value={{date 'YYYYMMDD' tz='Asia/Kolkata'}}
 
       - name: Build and push Docker image
