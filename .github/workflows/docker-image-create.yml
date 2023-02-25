@@ -39,7 +39,6 @@ jobs:
             latest=false
           tags: |
             type=semver,enable=true,pattern={{version}},priority=1000,prefix=release
-            type=raw,enable=true,priority=200,prefix={{branch}}-,value={{date 'YYYYMMDD-HHmmss' tz='Asia/Kolkata'}}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
